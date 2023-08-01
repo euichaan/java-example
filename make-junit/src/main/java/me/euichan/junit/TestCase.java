@@ -13,7 +13,15 @@ public abstract class TestCase {
 		this.fName = fName;
 	}
 
+	protected void setUp() {}
+
 	public void run() {
+		setUp();
+		runTest();
+		tearDown();
+	}
+
+	protected void runTest() {
 		try {
 			Method method = this.getClass().getMethod(fName, null);
 			log.info("{} execute", fName);
@@ -22,4 +30,6 @@ public abstract class TestCase {
 			throw new RuntimeException(e);
 		}
 	}
+
+	protected void tearDown() {}
 }

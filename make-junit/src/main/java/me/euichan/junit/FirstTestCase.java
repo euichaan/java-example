@@ -12,7 +12,6 @@ public class FirstTestCase extends TestCase {
 	public static void main(String[] args) {
 		new FirstTestCase("runTest").run(); // 각각의 테스트 케이스를 Command로 보고, 이를 실행하는 것은 run 메서드
 		new FirstTestCase("runTestMinus").run();
-		new FirstTestCase("runTestFail").run();
 	}
 
 	public void runTest() {
