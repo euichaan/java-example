@@ -13,6 +13,8 @@ public class FirstTestCase extends TestCase {
 
 	public static void main(String[] args) {
 		new FirstTestCase("runTest").run(); // 각각의 테스트 케이스를 Command로 보고, 이를 실행하는 것은 run 메서드
+		new FirstTestCase("runTestMinus").run();
+		new FirstTestCase("runTestFail").run();
 	}
 
 	public void runTest() {
@@ -20,11 +22,21 @@ public class FirstTestCase extends TestCase {
 		Assert.assertTrue(sum == 20);
 	}
 
+	public void runTestMinus() {
+		int sum = 10 - 10;
+		Assert.assertTrue(sum == 0);
+	}
+
+	public void runTestFail() {
+		int sum = 10 + 10;
+		Assert.assertTrue(sum == 30);
+	}
+
 	@Override
 	public void run() {
 		try {
 			Method method = this.getClass().getMethod(super.fName, null);
-			log.info("super.fName= {}", super.fName);
+			log.info("{} execute", fName);
 			method.invoke(this, null);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
