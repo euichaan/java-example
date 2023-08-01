@@ -1,7 +1,5 @@
 package me.euichan.junit;
 
-import java.lang.reflect.Method;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -30,16 +28,5 @@ public class FirstTestCase extends TestCase {
 	public void runTestFail() {
 		int sum = 10 + 10;
 		Assert.assertTrue(sum == 30);
-	}
-
-	@Override
-	public void run() {
-		try {
-			Method method = this.getClass().getMethod(super.fName, null);
-			log.info("{} execute", fName);
-			method.invoke(this, null);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
 	}
 }
